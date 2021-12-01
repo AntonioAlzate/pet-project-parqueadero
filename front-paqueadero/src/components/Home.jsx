@@ -1,13 +1,10 @@
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  NavLink,
-  Routes,
-} from "react-router-dom";
+import React, {useState} from "react";
+import {Link} from "react-router-dom";
 
 function Home() {
+
+  const [state, setState] = useState({})
+
   return (
     <div className="container h-100 d-flex justify-content-center">
       <div>

@@ -9,14 +9,12 @@ import Listado from './components/Listado'
 import {
   BrowserRouter as Router,
   Route,
-  Link,
-  NavLink,
   Routes
 } from "react-router-dom";
+import background from "./img/park.jpg";
 
 function App() {
   return (
-    <div>
       <Router>
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -27,7 +25,6 @@ function App() {
           <Route path="/listar-vehiculos" element={<Listado />} />
         </Routes>
       </Router>
-    </div>
   );
 }
 

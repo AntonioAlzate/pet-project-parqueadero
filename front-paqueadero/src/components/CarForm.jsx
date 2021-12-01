@@ -25,10 +25,10 @@ const CarForm = () => {
                 <input type="text" name="placa"/>
             </fieldset>
             <button onClick={addCar}>Registrar</button>
-        </form>    
-        <Link to="/">
+            <Link to="/">
                 <button>Volver</button>
             </Link>
+        </form>    
         </div>
     )    
 }
