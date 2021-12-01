@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useReducer} from 'react'
 
 const initialState = {
     list: []    
@@ -7,7 +7,9 @@ const initialState = {
 function reducer(state , action){
     switch (action.type) {
         case 'new-car':
-            return 
+            let newList = [state.list]
+            newList.push(action.item)
+            return {...state, list:newList}
         case 'registrar-tarifa':
             return
         case 'registrar-ingreso':

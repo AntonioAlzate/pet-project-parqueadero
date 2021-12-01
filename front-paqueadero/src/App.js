@@ -5,6 +5,7 @@ import FormTarifa from './components/FormTarifa'
 import FormIngreso from './components/FormIngreso'
 import Salida from './components/Salida'
 import Listado from './components/Listado'
+import './App.css'
 
 import {
   BrowserRouter as Router,
@@ -15,7 +16,7 @@ import background from "./img/park.jpg";
 
 function App() {
   return (
-      <Router>
+    <Router>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/new-car" element={<CarForm />} />
@@ -24,7 +25,7 @@ function App() {
           <Route path="/registrar-salida" element={<Salida />} />
           <Route path="/listar-vehiculos" element={<Listado />} />
         </Routes>
-      </Router>
+    </Router>
   );
 }
 

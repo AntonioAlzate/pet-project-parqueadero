@@ -3,20 +3,16 @@ import {Link} from "react-router-dom";
 
 function FormTarifa() {
     
-    const [tarifas, setTarifas] = useState({})
+    const [state, setState] = useState({})
     
     const registrarTarifa = (event) => {
         event.preventDefault()
         //code
-        let info = {name : event.target.name, valor: event.target.name}
-        setTarifas(...tarifas, info) //No funciona, posible uso de useEffect
-        console.log(tarifas)
-        console.log(event.target.name)
-        console.log(event.target.value)
     }
 
     return (
         <div>
+            <h2>Registrar tarifa</h2>
             <form >
             <fieldset>
                 <legend>Nombre</legend>
@@ -24,7 +20,9 @@ function FormTarifa() {
             </fieldset>
             <fieldset>
                 <legend>Valor</legend>
-                <input type="text" name="valor" />
+                <input type="text" name="valor" onChange={(event) => {
+                    setState({...state, valor:event.target.value})
+                }} />
             </fieldset>
             <button onClick={registrarTarifa}>Registrar tarifa</button>
             <Link to="/">

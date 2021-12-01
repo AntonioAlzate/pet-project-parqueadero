@@ -1,0 +1,14 @@
+body{
+    background-color: #FFAB4C;
+}
+
+form{
+    border: 1px;
+    border-color: black;
+    background-color: #F0E9D2;
+}
+
+.carList{
+    border-radius: 10px;
+    background-color: darkgrey;
+}
