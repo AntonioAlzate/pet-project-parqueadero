@@ -38,7 +38,7 @@ public class TarifaService {
     public TarifaDTO obtenerTarifaPorId(Long id) {
 
         Tarifa tarifaEntity = tarifaRepository.findById(id)
-                .orElseThrow(() -> new TarifaNoExiste(TARIFA_NO_EXISTE));
+                .orElseThrow(() -> new TarifaNoExisteException(TARIFA_NO_EXISTE));
 
         return tarifaFactory.EntitytoDTOTarifa(tarifaEntity);
     }
@@ -84,7 +84,7 @@ public class TarifaService {
 
 
     private void validarNombreTarifa(String nombre){
-        if(nombre.isEmpty())
+        if(nombre.isEmpty() || nombre == null)
             throw new NombreTarifaVacioException(NOMBRE_TARIFA_VACIO);
     }
 
@@ -104,13 +104,13 @@ public class TarifaService {
         validarExistenciaId(idTarifa);
 
         if(tarifaRepository.findById(idTarifa).orElse(null) == null){
-            throw new TarifaNoExiste(TARIFA_NO_EXISTE);
+            throw new TarifaNoExisteException(TARIFA_NO_EXISTE);
         }
     }
 
     private void validarExistenciaId(Long idTarifa) {
         if(idTarifa == null){
-            throw new TarifaSinIdEspecificado(ID_SIN_ESPECIFICAR);
+            throw new TarifaSinIdEspecificadoException(ID_SIN_ESPECIFICAR);
         }
     }
 
