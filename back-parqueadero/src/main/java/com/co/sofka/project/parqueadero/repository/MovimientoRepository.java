@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MovimientoRepository extends CrudRepository<Movimiento, Long> {
+    Movimiento findByVehiculoPlacaAndFinalizado(String placa, boolean estaFinalizado);
 }
