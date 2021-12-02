@@ -12,7 +12,7 @@ function FormTarifa() {
         
         const request = {
             nombre: state.nombre,
-            valor: state.valor,
+            valor: parseFloat(state.valor),
         }
         fetch(HOST_API+'/tarifas/tarifa', {
             method: 'POST',
@@ -30,7 +30,9 @@ function FormTarifa() {
             <form ref={formRef}>
             <fieldset>
                 <legend>Nombre</legend>
-                <input type="text" name="tipo" />
+                <input type="text" name="nombre" onChange={(event) => {
+                    setState({...state, nombre:event.target.value})
+                }}/>
             </fieldset>
             <fieldset>
                 <legend>Valor</legend>
