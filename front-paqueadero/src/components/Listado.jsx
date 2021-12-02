@@ -18,6 +18,7 @@ function Listado() {
         <table className="carList">
         <thead>
           <tr className="headerCar">
+          <td>Id</td>
           <td>Placa</td>
           <td>Color</td>
           <td>Marca</td>
@@ -27,6 +28,7 @@ function Listado() {
           return (
               <tbody>
                 <tr>
+                <td>{car.idVehiculo}</td>
                 <td>{car.placa}</td>
                 <td>{car.color}</td>
                 <td>{car.marca}</td>
