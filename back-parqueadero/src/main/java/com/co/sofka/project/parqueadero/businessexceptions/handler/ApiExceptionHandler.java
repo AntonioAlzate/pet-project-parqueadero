@@ -44,4 +44,11 @@ class ApiExceptqionHandler {
    public MensajeError badRequest(HttpServletRequest request, Exception exception){
         return new MensajeError(exception, request.getRequestURI());
     }
+
+   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+   @ExceptionHandler({Exception.class})
+   @ResponseBody
+   public MensajeError fatalErrorUnexpectedException(HttpServletRequest request, Exception exception){
+       return new MensajeError(exception, request.getRequestURI());
+   }
 }
