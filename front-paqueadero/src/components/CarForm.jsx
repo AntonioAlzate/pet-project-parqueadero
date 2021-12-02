@@ -1,7 +1,7 @@
 import React, { useRef, useState, createContext, useContext } from 'react';
 import {Link} from "react-router-dom";
+import HOST_API from './../util/connection'
 
-const HOST_API = "http://localhost:3636/api/v1"
 const initialState = {
     list: []
 }
@@ -15,16 +15,19 @@ const CarForm = () => {
 
     function addCar(event){
         event.preventDefault()
-        //Agregar un nuevo carro
         
         const request = {
-            placa: state.name,
+            placa: state.placa,
             color: state.color,
             marca: state.marca
         }
-        //Iniciado
-        //fetch(HOST_API+"vehiculos", )
-
+        fetch(HOST_API+'/vehiculos/vehiculo', {
+            method: 'POST',
+            body: JSON.stringify(request),
+            headers: {
+                'Content-Type':'application/json'
+            }
+        }).then(response => console.log(response.json()))
         formRef.current.reset()
     }
     

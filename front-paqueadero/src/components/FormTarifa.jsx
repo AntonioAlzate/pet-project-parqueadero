@@ -1,19 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState, useRef} from 'react'
 import {Link} from "react-router-dom";
+import HOST_API from '../util/connection';
 
 function FormTarifa() {
     
     const [state, setState] = useState({})
-    
+    const formRef = useRef(null)
+
     const registrarTarifa = (event) => {
         event.preventDefault()
-        //code
+        
+        const request = {
+            nombre: state.nombre,
+            valor: state.valor,
+        }
+        fetch(HOST_API+'/tarifas/tarifa', {
+            method: 'POST',
+            body: JSON.stringify(request),
+            headers: {
+                'Content-Type':'application/json'
+            }
+        }).then(response => console.log(response.json()))
+        formRef.current.reset()
     }
 
     return (
         <div>
             <h2>Registrar tarifa</h2>
-            <form >
+            <form ref={formRef}>
             <fieldset>
                 <legend>Nombre</legend>
                 <input type="text" name="tipo" />

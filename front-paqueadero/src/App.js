@@ -12,7 +12,6 @@ import {
   Route,
   Routes
 } from "react-router-dom";
-import background from "./img/park.jpg";
 
 function App() {
   return (
