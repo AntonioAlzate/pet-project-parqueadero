@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/movimientos")
+@CrossOrigin(origins = "http://localhost:3000")
 public class MovimientoController {
 
     @Autowired
@@ -23,8 +24,8 @@ public class MovimientoController {
         return new ResponseEntity<ComprobanteIngresoDTO>(comprobante, HttpStatus.CREATED);
     }
 
-   @GetMapping("/salida/vehiculo")
-   public ResponseEntity<MovimientoDTO> registrarSalida(String placa){
+   @GetMapping("/salida/vehiculo/{placa}")
+   public ResponseEntity<MovimientoDTO> registrarSalida(@RequestParam("placa") String placa){
         MovimientoDTO movimientoDTO = movimientoService.registrarSalida(placa);
 
         return new ResponseEntity<MovimientoDTO>(movimientoDTO, HttpStatus.OK);
