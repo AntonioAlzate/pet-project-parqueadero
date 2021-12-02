@@ -62,7 +62,6 @@ public class TarifaService {
         validarNombreTarifa(tarifaDTO.getNombre());
         validarValorTarifa(tarifaDTO.getValor());
         validarExistenciaTarifa(tarifaDTO.getIdTarifa());
-        validarNoExistenciaTarifa(tarifaDTO.getNombre());
 
         Tarifa tarifaEntity = new Tarifa();
         tarifaEntity.setIdTarifa(tarifaDTO.getIdTarifa());

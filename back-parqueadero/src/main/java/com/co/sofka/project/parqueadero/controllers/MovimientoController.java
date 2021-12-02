@@ -25,7 +25,7 @@ public class MovimientoController {
     }
 
    @GetMapping("/salida/vehiculo/{placa}")
-   public ResponseEntity<MovimientoDTO> registrarSalida(@RequestParam("placa") String placa){
+   public ResponseEntity<MovimientoDTO> registrarSalida(@PathVariable("placa") String placa){
         MovimientoDTO movimientoDTO = movimientoService.registrarSalida(placa);
 
         return new ResponseEntity<MovimientoDTO>(movimientoDTO, HttpStatus.OK);
