@@ -37,7 +37,7 @@ export const FacturaSalida = ({ factura }) => {
               <div className="widget-body">
                 <div className="widget-main padding-24">
                   <div className="row">
-                    <div className="col-sm-6">
+                    <div className="w-50">
                       <div className="">
                         <div className="col-xs-11 label label-lg label-info arrowed-in arrowed-right">
                           <b>Responsables Antonio - Julian</b>
@@ -61,7 +61,7 @@ export const FacturaSalida = ({ factura }) => {
                       </div>
                     </div>
 
-                    <div className="col-sm-6">
+                    <div className="w-50">
                       <div className="row">
                         <div className="col-xs-11 label label-lg label-success arrowed-in arrowed-right">
                           <b>Datos Vehículo</b>
@@ -94,8 +94,33 @@ export const FacturaSalida = ({ factura }) => {
                   <div className="space"></div>
 
                   <div>
-                    <table className="table table-dark  p-5">
-                      <thead >
+                    <table className="table  p-5">
+                      <thead>
+                        <tr>
+                          <th className="center">#</th>
+                          <th>TARIFA</th>
+                          <th className="hidden-xs">VALOR</th>
+                          <th className="hidden-480">TIPO COBRO</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr>
+                          <td className="center">1</td>
+
+                          <td>{factura.tarifaDTO.nombre}</td>
+                          <td className="hidden-xs">
+                            {factura.tarifaDTO.valor}
+                          </td>
+                          <td className="hidden-480"> Hora </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div>
+                    <table className="table p-5">
+                      <thead>
                         <tr>
                           <th className="center">#</th>
                           <th>ACCIÓN</th>
@@ -135,13 +160,13 @@ export const FacturaSalida = ({ factura }) => {
                   <div className="row">
                     <div className="col-sm-5 text-left">
                       <h4 className="pull-right">
-                        Horas Transcurridas :
+                        Horas Transcurridas:
                         <span className="red">
                           {factura.tiempoAPagarHoras} horas
                         </span>
                       </h4>
                       <h4 className="pull-right">
-                        Total A Pagar :
+                        Total A Pagar:
                         <span className="red">{factura.valorPago}$</span>
                       </h4>
                     </div>
