@@ -1,10 +1,8 @@
 package com.co.sofka.project.parqueadero.businessexceptions.movimiento;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import com.co.sofka.project.parqueadero.businessexceptions.general.BadRequestException;
 
-@ResponseStatus(value = HttpStatus.BAD_REQUEST)
-public class VehiculoYaIngresadoException extends RuntimeException{
+public class VehiculoYaIngresadoException extends BadRequestException {
 
     public VehiculoYaIngresadoException(String mensaje){
         super(mensaje);

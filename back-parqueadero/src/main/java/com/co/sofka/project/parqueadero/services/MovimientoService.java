@@ -90,6 +90,7 @@ public class MovimientoService {
     }
 
     public MovimientoDTO registrarSalida(String placa) {
+
         String placaSan = placa.trim().toUpperCase();
 
         Movimiento movimiento = movimientoRepository.findByVehiculoPlacaAndFinalizado(placaSan, false);

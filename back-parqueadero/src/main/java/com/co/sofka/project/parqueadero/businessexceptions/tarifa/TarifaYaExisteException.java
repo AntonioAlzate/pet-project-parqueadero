@@ -1,10 +1,8 @@
 package com.co.sofka.project.parqueadero.businessexceptions.tarifa;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import com.co.sofka.project.parqueadero.businessexceptions.general.BadRequestException;
 
-@ResponseStatus(value = HttpStatus.BAD_REQUEST)
-public class TarifaYaExisteException extends RuntimeException{
+public class TarifaYaExisteException extends BadRequestException {
     public TarifaYaExisteException(String mensaje) {
         super(mensaje);
     }

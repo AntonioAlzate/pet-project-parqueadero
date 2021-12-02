@@ -1,14 +1,11 @@
 package com.co.sofka.project.parqueadero.services;
 
-import com.co.sofka.project.parqueadero.businessexceptions.CampoRequeridoException;
-import com.co.sofka.project.parqueadero.businessexceptions.tarifa.TarifaNoExisteException;
-import com.co.sofka.project.parqueadero.businessexceptions.tarifa.TarifaSinIdEspecificadoException;
+import com.co.sofka.project.parqueadero.businessexceptions.general.CampoRequeridoException;
 import com.co.sofka.project.parqueadero.businessexceptions.vehiculo.VehiculoNoExisteException;
 import com.co.sofka.project.parqueadero.businessexceptions.vehiculo.VehiculoSinIdEspecificadoException;
 import com.co.sofka.project.parqueadero.businessexceptions.vehiculo.VehiculoYaExisteException;
 import com.co.sofka.project.parqueadero.dtos.vehiculo.VehiculoCreacionDTO;
 import com.co.sofka.project.parqueadero.dtos.vehiculo.VehiculoDTO;
-import com.co.sofka.project.parqueadero.entities.Tarifa;
 import com.co.sofka.project.parqueadero.entities.Vehiculo;
 import com.co.sofka.project.parqueadero.factory.VehiculoFactory;
 import com.co.sofka.project.parqueadero.repository.VehiculoRepository;

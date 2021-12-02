@@ -1,10 +1,8 @@
 package com.co.sofka.project.parqueadero.businessexceptions.tarifa;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import com.co.sofka.project.parqueadero.businessexceptions.general.NotFoundException;
 
-@ResponseStatus(value = HttpStatus.NOT_FOUND)
-public class TarifaNoExisteException extends RuntimeException{
+public class TarifaNoExisteException extends NotFoundException {
     public TarifaNoExisteException(String mensaje) {
         super(mensaje);
     }
