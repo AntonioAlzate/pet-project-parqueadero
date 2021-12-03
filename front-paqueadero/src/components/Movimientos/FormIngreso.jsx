@@ -1,6 +1,6 @@
 import React, { useState, useRef, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Store from "../util/Store";
+import Store from "../../util/Store";
 import Swal from "sweetalert2";
 import { Fragment } from "react/cjs/react.production.min";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -10,7 +10,7 @@ import {
   DropdownMenu,
   DropdownToggle,
 } from "reactstrap";
-import HOST_API from "../util/connection";
+import HOST_API from "./../../util/connection";
 
 function FormIngreso() {
   const [state, setState] = useState({});

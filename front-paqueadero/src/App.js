@@ -9,6 +9,7 @@ import './App.css'
 import ListarTarifas from './components/Tarifa/ListarTarifas';
 import EditarTarifa from './components/Tarifa/EditarTarifa'
 import EliminarTarifa from './components/Tarifa/EliminarTarifa.jsx'
+import { StoreProvider } from './util/Store';
 
 import {
   BrowserRouter as Router,
