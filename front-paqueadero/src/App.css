@@ -1,5 +1,25 @@
 body{
-    background-color: #E7DFD5;
+    background-color: #D3E4CD;
+}
+
+button{
+    width: 150px;
+    border-radius: 20px;
+    background-color: rgba(209, 209, 196, 0.856);
+    border-color: transparent;
+    margin: 5px;
+}
+
+select{
+    margin: 5px;
+    background-color: rgba(209, 209, 196, 0.856);
+    border-radius: 20px;
+}
+
+input{
+    margin: 5px;
+    background-color: rgba(125, 126, 139, 0.787);
+    border-radius: 20px;
 }
 
 form{

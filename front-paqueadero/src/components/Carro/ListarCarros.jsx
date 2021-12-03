@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {Link} from "react-router-dom";
-import HOST_API from './../util/connection'
-
-
+import HOST_API from './../../util/connection'
 
 function Listado() {
     const [state, setState] = useState([])
