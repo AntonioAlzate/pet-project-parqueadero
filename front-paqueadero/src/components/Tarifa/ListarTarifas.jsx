@@ -32,7 +32,7 @@ function ListarTarifas() {
             {state.map((tarifa) => {
               return <Tarifa 
                 key="tarifa.idTarifa"
-                tarifa={tarifa}
+                tarifaProp={tarifa}
               />
             })}
           </tbody>

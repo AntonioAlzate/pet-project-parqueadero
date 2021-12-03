@@ -4,7 +4,8 @@ import Reducer from './Reducer';
 
 const initialState = {
     vehiculo: { list: [], item: {} },
-    tarifa: { list: [], item: {}}
+    tarifa: { list: [], item: {}},
+    vehiculoEditar: null
   };
 
 const Store = createContext(initialState);

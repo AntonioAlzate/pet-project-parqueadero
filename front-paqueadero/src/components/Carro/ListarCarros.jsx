@@ -1,18 +1,27 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import HOST_API from "./../../util/connection";
 import Vehiculo from "./Vehiculo";
+import Store from './../../util/Store';
+
 
 function Listado() {
   const [state, setState] = useState([]);
+
+  const {
+    dispatch,
+    state: { vehiculo },
+  } = useContext(Store);
+  const currentList = vehiculo.list;
 
   useEffect(() => {
     fetch(HOST_API + "/vehiculos")
       .then((response) => response.json())
       .then((list) => {
         setState(list);
+        dispatch({ type: "update-list-car", list });
       });
-  }, []);
+  }, [dispatch]);
 
   return (
     <Fragment>
@@ -33,7 +42,7 @@ function Listado() {
             {state.map((car) => {
               return <Vehiculo 
                 key = {car.idVehiculo}
-                vehiculo={car}
+                vehiculoProp={car}
               />
             })}
           </tbody>

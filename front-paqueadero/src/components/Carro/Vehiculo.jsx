@@ -1,20 +1,31 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, {useContext} from 'react'
+import { Link, useNavigate } from 'react-router-dom';
+import Store from './../../util/Store';
 
-const Vehiculo = ({vehiculo}) => {
+const Vehiculo = ({vehiculoProp}) => {
+    const navigate = useNavigate();
+
+    const redireccionarEdicion = vehiculo => {
+      dispatch({ type: "car-selected", item: vehiculo });
+      navigate(`/editar-vehiculo`);
+    }
+
+    const { dispatch, state: { vehiculo } } = useContext(Store);
+
     return ( 
         <tr>
-                <td>{vehiculo.idVehiculo}</td>
-                <td>{vehiculo.placa}</td>
-                <td>{vehiculo.color}</td>
-                <td>{vehiculo.marca}</td>
+                <td>{vehiculoProp.idVehiculo}</td>
+                <td>{vehiculoProp.placa}</td>
+                <td>{vehiculoProp.color}</td>
+                <td>{vehiculoProp.marca}</td>
                 <td className="acciones">
-                  <Link
-                    to={`/editar-vehiculo`}
+                  <button
+                    type="button"
+                    onClick={() => redireccionarEdicion(vehiculoProp)}
                     className="btn btn-primary mr-2"
                   >
                     Editar
-                  </Link>
+                  </button>
                   <button type="button" className="btn btn-danger">
                     Eliminar
                   </button>

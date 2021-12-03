@@ -4,7 +4,7 @@ function Reducer(state, action) {
     case "add-car":
       const carUp = state.vehiculo.list;
       carUp.push(action.item);
-      return { ...state, group: { list: carUp, item: {} } };
+      return { ...state, vehiculo: { list: carUp, item: {} } };
 
     case "delete-car":
       const carUpDelete = state.vehiculo;
@@ -12,17 +12,17 @@ function Reducer(state, action) {
         return item.idVehiculo !== action.id;
       });
       carUpDelete.list = listCar;
-      return { ...state, group: carUpDelete };
+      return { ...state, vehiculo: carUpDelete };
 
     case "update-list-car":
       const listCarUpdate = state.vehiculo;
       listCarUpdate.list = action.list;
-      return { ...state, group: listCarUpdate };
+      return { ...state, vehiculo: listCarUpdate };
 
     case "update-car":
       const carUpItem = state.vehiculo;
       const listUpdateEditCar = carUpItem.list.map((item) => {
-        if (item.id === action.item.id) {
+        if (item.idVehiculo === action.item.id) {
           return action.item;
         }
         return item;
@@ -30,6 +30,11 @@ function Reducer(state, action) {
       carUpItem.list = listUpdateEditCar;
       carUpItem.item = {};
       return { ...state, vehiculo: carUpItem };
+    case "car-selected":
+      const cardUpdate = state.vehiculo;
+      cardUpdate.item = action.item;
+      cardUpdate.list = state.list;
+      return {...state, vehiculo: cardUpdate}
 
     // Tarifas
     case "update-tarifa":
@@ -62,6 +67,13 @@ function Reducer(state, action) {
       const tarifaUp = state.todo.list;
       tarifaUp.push(action.item);
       return { ...state, tarifa: { list: tarifaUp, item: {} } };
+
+    case "tarifa-selected":
+      console.log("entre")
+      const tarifaUpdate = state.tarifa;
+      tarifaUpdate.item = action.item;
+      tarifaUpdate.list = state.list;
+      return {...state, tarifa: tarifaUpdate}
     default:
       return state;
 
