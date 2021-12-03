@@ -37,6 +37,14 @@ function Home() {
       <Link to="/eliminar-tarifa">
         <button>Eliminar tarifa</button>
       </Link>
+      <br></br>
+      <Link to="/eliminar-vehiculo">
+        <button>Eliminar Vehiculo</button>
+      </Link>
+      <br></br>
+      <Link to="/editar-vehiculo">
+        <button>Editar Vehiculo</button>
+      </Link>
       </div>
     </div>
   );

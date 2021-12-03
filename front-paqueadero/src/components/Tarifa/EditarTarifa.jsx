@@ -24,26 +24,26 @@ const EditarTarifa = () => {
       return;
     }
 
-    const request = {
-      nombre: "",
-      valor: 0,
-      idTarifa: 0,
-    };
-
     fetch(HOST_API + `/tarifas/tarifa/${currentTarifa.idTarifa}`, {
       method: "GET",
     })
     .then((response) => response.json())
     .then((eTarifa) => {
-        request.nombre = eTarifa.nombre;
-        request.idTarifa = eTarifa.idTarifa;
-        request.valor = eTarifa.valor;
-    });
-
-    fetch(HOST_API + `/tarifas/tarifa/${currentTarifa.idTarifa}`, {
-      method: "PUT",
-      body: { request },
-    });
+        const request = {
+          nombre: eTarifa.nombre,
+          valor: parseInt(state.valor),
+          idTarifa: parseInt(eTarifa.idTarifa)
+        }
+        return request
+    })
+    .then((request)=>{
+      fetch(HOST_API + `/tarifas/tarifa/${currentTarifa.idTarifa}`, {
+      method: 'PUT',
+      body: JSON.stringify(request),
+      headers:{
+        'Content-Type':'application/json'
+      }
+    })})
     formRef.current.reset();
   };
 

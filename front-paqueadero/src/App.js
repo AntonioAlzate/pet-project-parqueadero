@@ -10,6 +10,8 @@ import ListarTarifas from './components/Tarifa/ListarTarifas';
 import EditarTarifa from './components/Tarifa/EditarTarifa'
 import EliminarTarifa from './components/Tarifa/EliminarTarifa.jsx'
 import { StoreProvider } from './util/Store';
+import EliminarCarro from './components/Carro/EliminarCarro';
+import EditarCarro from './components/Carro/EditarCarro';
 
 import {
   BrowserRouter as Router,
@@ -31,6 +33,8 @@ function App() {
           <Route path="/listar-tarifas" element={<ListarTarifas />} />
           <Route path="/editar-tarifa" element={<EditarTarifa />} />
           <Route path="/eliminar-tarifa" element={<EliminarTarifa />} />
+          <Route path="/eliminar-vehiculo" element={<EliminarCarro />} />
+          <Route path="/editar-vehiculo" element={<EditarCarro />} />
         </Routes>
     </Router>
     </StoreProvider>
