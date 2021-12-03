@@ -4,124 +4,65 @@ import Store from "../util/Store";
 import Swal from "sweetalert2";
 import { Fragment } from "react/cjs/react.production.min";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-} from "reactstrap";
 import HOST_API from "../util/connection";
+import { withRouter } from "react-router-dom";
+import { FacturaSalida } from "./FacturaSalida";
 
-function FormIngreso() {
-  const [state, setState] = useState({});
+function Salida() {
   const formRef = useRef(null);
-
-  const [dropdown, setdropdown] = useState(false);
-  const [idTarifaSelect, setidTarifaSelect] = useState(0);
-  const [tarifaSelect, setTarifaSelect] = useState("TARIFAS");
-
   const {
     dispatch,
-    state: { tarifa, vehiculo },
+    state: { vehiculo },
   } = useContext(Store);
-  const currentList = tarifa.list;
 
   const vehiculo1 = vehiculo.item;
   const [stateVehiculo, setstateVehiculo] = useState(vehiculo1);
 
-  useEffect(() => {
-    fetch(HOST_API + "/tarifas")
-      .then((response) => response.json())
-      .then((list) => {
-        dispatch({ type: "update-list-tarifa", list });
-      });
-  }, [dispatch]);
+  const [generarFactura, setgenerarFactura] = useState(false);
+  const [factura, setfactura] = useState({})
 
-  const registrarIngreso = (event) => {
+  const registrarSalida = (event) => {
     event.preventDefault();
-    //Codigo registro
 
-    const request = {
-      idTarifa: idTarifaSelect,
-      placa: stateVehiculo.placa,
-    };
+    let placa = stateVehiculo.placa;
 
-    fetch(HOST_API + "/movimientos/ingreso/vehiculo", {
-      method: "POST",
-      body: JSON.stringify(request),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(HOST_API + "/movimientos/salida/vehiculo/" + placa)
       .then((response) => response.json())
-      .then((ingreso) => {
-        setstateVehiculo({ placa: "" });
-
-        if (ingreso.excepcion !== undefined) {
+      .then((factura) => {
+        if (factura.excepcion !== undefined) {
           Swal.fire({
             icon: "error",
-            title: "No es posible registrar el ingreso",
-            text: `Motivo: ${ingreso.mensaje}`,
+            title: "No es posible registrar la salida",
+            text: `Motivo: ${factura.mensaje}`,
           });
+          setgenerarFactura(false);
           return;
         }
 
         Swal.fire(
-          "¡Ingreso registrado exitosamente!",
-          `Vehículo con placa: ${ingreso.placa}
-            Tarifa: ${ingreso.tarifaDTO.nombre}
-            Valor Hora: ${ingreso.tarifaDTO.valor}$
-            Fecha ingreso: ${ingreso.fechaIngreso
-              .slice(0, 19)
-              .replace(/T/g, " ")}`,
+          "¡Salida Registrada Exitosamente!",
+          ` A continuación se generará tu factura.`,
           "success"
         );
-      })
-      .catch((error) => console.log(error.message));
+        setfactura(factura)
+        setgenerarFactura(true);
+      });
+
+    if (generarFactura === true) {
+      window.location.href = "/";
+    }
 
     formRef.current.reset();
-  };
-
-  const abrirCerrarDropdown = () => {
-    setdropdown(!dropdown);
-  };
-
-  const seleccionTarifa = (nombre, idTarifa) => {
-    setidTarifaSelect(idTarifa);
-    setTarifaSelect(nombre);
   };
 
   return (
     <Fragment>
       <div className="container mt-5">
-        <h1 className="text-center">Registro Ingreso Vehículo</h1>
+        <h1 className="text-center">Registro Salida Vehículo</h1>
 
-        <Dropdown
-          className="mt-5"
-          isOpen={dropdown}
-          toggle={abrirCerrarDropdown}
-        >
-          <DropdownToggle caret color="primary">
-            {tarifaSelect}
-          </DropdownToggle>
-          <DropdownMenu>
-            {currentList.map((tarifa) => {
-              return (
-                <DropdownItem
-                  key={tarifa.idTarifa}
-                  onClick={() =>
-                    seleccionTarifa(tarifa.nombre, tarifa.idTarifa)
-                  }
-                >
-                  {tarifa.nombre}
-                </DropdownItem>
-              );
-            })}
-          </DropdownMenu>
-        </Dropdown>
-
-        <form ref={formRef}>
-          <div className="input-group mt-2">
+        {!generarFactura ? 
+        ( <form ref={formRef}>
+          <div className="input-group mt-5">
             <input
               type="text"
               name="placa"
@@ -144,18 +85,19 @@ function FormIngreso() {
           <div className="text-center">
             <button
               className="btn btn-success mt-2 text-center btn-lg"
-              onClick={registrarIngreso}
+              onClick={registrarSalida}
             >
-              Registrar ingreso
+              Registrar Salida
             </button>
           </div>
         </form>
-        <Link to="/">
-          <button className="btn btn-primary mt-5">Volver</button>
-        </Link>
+        ) : (
+      <div>
+          <FacturaSalida factura={factura} />
+      </div> )}
       </div>
     </Fragment>
   );
 }
 
-export default FormIngreso;
+export default Salida;

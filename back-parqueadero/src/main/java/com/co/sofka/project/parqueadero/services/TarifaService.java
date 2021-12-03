@@ -45,8 +45,8 @@ public class TarifaService {
 
     public TarifaDTO crearTarifa(TarifaCreacionDTO tarifaCreacionDTO) {
 
-        validarNoExistenciaTarifa(tarifaCreacionDTO.getNombre());
         validarNombreTarifa(tarifaCreacionDTO.getNombre());
+        validarNoExistenciaTarifa(tarifaCreacionDTO.getNombre());
         validarValorTarifa(tarifaCreacionDTO.getValor());
 
         Tarifa tarifaEntity = new Tarifa();
@@ -62,7 +62,6 @@ public class TarifaService {
         validarNombreTarifa(tarifaDTO.getNombre());
         validarValorTarifa(tarifaDTO.getValor());
         validarExistenciaTarifa(tarifaDTO.getIdTarifa());
-        validarNoExistenciaTarifa(tarifaDTO.getNombre());
 
         Tarifa tarifaEntity = new Tarifa();
         tarifaEntity.setIdTarifa(tarifaDTO.getIdTarifa());
@@ -84,7 +83,7 @@ public class TarifaService {
 
 
     private void validarNombreTarifa(String nombre){
-        if(nombre.isEmpty() || nombre == null)
+        if(nombre == null || nombre.isEmpty())
             throw new NombreTarifaVacioException(NOMBRE_TARIFA_VACIO);
     }
 

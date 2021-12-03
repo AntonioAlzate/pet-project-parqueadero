@@ -9,6 +9,7 @@ import './App.css'
 import ListarTarifas from './components/Tarifa/ListarTarifas';
 import EditarTarifa from './components/Tarifa/EditarTarifa'
 import EliminarTarifa from './components/Tarifa/EliminarTarifa.jsx'
+
 import {
   BrowserRouter as Router,
   Route,
@@ -17,6 +18,7 @@ import {
 
 function App() {
   return (
+    <StoreProvider>
     <Router>
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -30,6 +32,7 @@ function App() {
           <Route path="/eliminar-tarifa" element={<EliminarTarifa />} />
         </Routes>
     </Router>
+    </StoreProvider>
   );
 }
 

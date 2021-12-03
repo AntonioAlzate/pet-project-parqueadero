@@ -32,6 +32,7 @@ public class MovimientoService {
             "el ingreso ya registrado en el sistema";
     private static final String TARIFA_NO_REGISTRADA = "La tarifa no se encuentra registrada en el sistema";
     private static final String VEHICULO_SIN_INGRESO_REGISTRADO = "El vehículo se encuentra registrado pero no existe un ingreso al parqueadero en el sistema el cual finalizar";
+    private static final String TARIFA_NO_CONFIGURADA = "Debe elegir una tarifa con id valido recuerde que el id debe ser mayor a 0";
 
     @Autowired
     MovimientoRepository movimientoRepository;
@@ -52,7 +53,10 @@ public class MovimientoService {
     VehiculoFactory vehiculoFactory;
 
     public ComprobanteIngresoDTO registrarIngreso(IngresoVehiculoDTO ingresoDTO) {
-        String placa = ingresoDTO.getPlaca().trim().toUpperCase();
+        String placa = "";
+        if(ingresoDTO.getPlaca() != null)
+            placa = ingresoDTO.getPlaca().trim().toUpperCase();
+
         validarExistenciaVehiculo(placa);
         validarVehiculoSinIngresoVigente(placa);
         validarExistenciaTarifa(ingresoDTO.getIdTarifa());
@@ -86,6 +90,10 @@ public class MovimientoService {
     private void validarExistenciaTarifa(Long idTarifa) {
         if (tarifaRepository.findById(idTarifa) == null) {
             throw new TarifaNoExisteException(TARIFA_NO_REGISTRADA);
+        }
+
+        if(idTarifa <= 0){
+            throw new TarifaNoExisteException(TARIFA_NO_CONFIGURADA);
         }
     }
 
