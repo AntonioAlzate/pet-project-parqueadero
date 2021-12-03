@@ -17,13 +17,13 @@ import java.util.List;
 @Service
 public class VehiculoService {
 
-    private static final String  VEHICULO_NO_EXISTE = "El vehículo al que intenta acceder no existe";
-    private static final String PLACA_REQUERIDA = "El campo PLACA es obligatorio";
-    private static final String MARCA_REQUERIDA = "El campo MARCA es obligatorio";
-    private static final String COLOR_REQUERIDA = "El campo COLOR es obligatorio";
-    private static final String VEHICULO_YA_EXISTE = "La placa del vehículo que intenta ingresar ya está registrado";
-    private static final String ELIMINACION_VEHICULO_EXITOSA = "El vehículo se elimino exitosamente";
-    private static final String ID_SIN_ESPECIFICAR = "Para realizar la operación debe especificar el ID";
+    private static final String  VEHICULO_NO_EXISTE = "El vehículo al que intenta acceder no existe.";
+    private static final String PLACA_REQUERIDA = "El campo PLACA es obligatorio.";
+    private static final String MARCA_REQUERIDA = "El campo MARCA es obligatorio.";
+    private static final String COLOR_REQUERIDA = "El campo COLOR es obligatorio.";
+    private static final String VEHICULO_YA_EXISTE = "La placa del vehículo que intenta ingresar ya está registrada.";
+    private static final String ELIMINACION_VEHICULO_EXITOSA = "El vehículo se eliminó exitosamente.";
+    private static final String ID_SIN_ESPECIFICAR = "Para realizar la operación debe especificar el ID.";
 
     @Autowired
     VehiculoRepository vehiculoRepository;

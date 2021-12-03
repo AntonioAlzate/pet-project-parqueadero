@@ -28,11 +28,11 @@ public class MovimientoService {
 
     private static final String VEHICULO_NO_REGISTRADO = "El vehículo no se encuentra registrado en el sistema, recuerde registrarlo antes de " +
             "registrar un ingreso a dicho vehículo.";
-    private static final String VEHICULO_YA_INGRESADO = "El vehículo que desea ingresar ya tiene un ingreso registrado, por lo tanto debe finalizar " +
-            "el ingreso ya registrado en el sistema";
-    private static final String TARIFA_NO_REGISTRADA = "La tarifa no se encuentra registrada en el sistema";
-    private static final String VEHICULO_SIN_INGRESO_REGISTRADO = "El vehículo se encuentra registrado pero no existe un ingreso al parqueadero en el sistema el cual finalizar";
-    private static final String TARIFA_NO_CONFIGURADA = "Debe elegir una tarifa con id valido recuerde que el id debe ser mayor a 0";
+    private static final String VEHICULO_YA_INGRESADO = "El vehículo que desea ingresar ya tiene un ingreso registrado, por lo tanto, debe finalizar " +
+            "el ingreso ya registrado en el sistema.";
+    private static final String TARIFA_NO_REGISTRADA = "La tarifa no se encuentra registrada en el sistema.";
+    private static final String VEHICULO_SIN_INGRESO_REGISTRADO = "El vehículo se encuentra registrado, pero no existe un ingreso al parqueadero en el sistema el cual finalizar.";
+    private static final String TARIFA_NO_CONFIGURADA = "Debe elegir una tarifa con id valido recuerde que el id debe ser mayor a 0.";
 
     @Autowired
     MovimientoRepository movimientoRepository;

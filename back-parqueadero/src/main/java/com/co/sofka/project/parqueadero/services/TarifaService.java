@@ -14,13 +14,13 @@ import java.util.List;
 @Service
 public class TarifaService {
 
-    private static final String NOMBRE_TARIFA_VACIO = "El nombre de una tarifa no puede estár vacío";
-    private static final String VALOR_TARIFA_INCORRECTO = "El valor de una tarifa no puede ser igual o menor a cero";
-    private static final String TARIFA_YA_EXISTE = "La tarifa con el nombre que desea registrar ya se encuentra en el sistema";
-    private static final String TARIFA_NO_EXISTE = "No es posible realizar una acción sobre una Tarifa que no existe";
-    private static final String ELIMINACION_TARIFA_EXITOSA = "Se ha eliminado la tarifa exitosamente";
-    private static final String TARIFA_ELIMINAR_NO_EXISTE = "No es posible eliminar una Tarifa con un id que no existe";
-    private static final String ID_SIN_ESPECIFICAR = "Para esta operación es necesario enviar el id de la tarifa correspondiente";
+    private static final String NOMBRE_TARIFA_VACIO = "El nombre de una tarifa no puede estar vacío.";
+    private static final String VALOR_TARIFA_INCORRECTO = "El valor de una tarifa no puede ser igual o menor a cero.";
+    private static final String TARIFA_YA_EXISTE = "La tarifa con el nombre que desea registrar ya se encuentra en el sistema.";
+    private static final String TARIFA_NO_EXISTE = "No es posible realizar una acción sobre una Tarifa que no existe.";
+    private static final String ELIMINACION_TARIFA_EXITOSA = "Se ha eliminado la tarifa exitosamente.";
+    private static final String TARIFA_ELIMINAR_NO_EXISTE = "No es posible eliminar una Tarifa con un id que no existe.";
+    private static final String ID_SIN_ESPECIFICAR = "Para esta operación es necesario enviar el id de la tarifa correspondiente.";
 
     @Autowired
     TarifaFactory tarifaFactory;
