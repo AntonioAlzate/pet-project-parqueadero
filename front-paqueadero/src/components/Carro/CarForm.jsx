@@ -61,7 +61,7 @@ const CarForm = () => {
 
   return (
     <Fragment>
-      <div className="row justify-content-center mt-5">
+      <div className="row justify-content-center mt-5 mb-5">
         <div className="col-md-8">
           <div className="card">
             <div className="card-body">
