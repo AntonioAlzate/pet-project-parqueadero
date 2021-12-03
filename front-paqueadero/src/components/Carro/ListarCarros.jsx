@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import HOST_API from "./../../util/connection";
+import Vehiculo from "./Vehiculo";
 
 function Listado() {
   const [state, setState] = useState([]);
@@ -27,29 +28,16 @@ function Listado() {
               <th scope="col">Acciones</th>
             </tr>
           </thead>
-          {state.map((car) => {
-            return (
-              <tbody>
-                <tr>
-                  <td>{car.idVehiculo}</td>
-                  <td>{car.placa}</td>
-                  <td>{car.color}</td>
-                  <td>{car.marca}</td>
-                  <td className="acciones">
-                    <Link
-                      to={`/editar-vehiculo`}
-                      className="btn btn-primary mr-2"
-                    >
-                      Editar
-                    </Link>
-                    <button type="button" className="btn btn-danger">
-                      Eliminar
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            );
-          })}
+
+          <tbody>
+            {state.map((car) => {
+              return <Vehiculo 
+                key = {car.idVehiculo}
+                vehiculo={car}
+              />
+            })}
+          </tbody>
+
         </table>
       </div>
       <Link to="/">

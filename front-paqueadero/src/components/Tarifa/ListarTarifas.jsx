@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import HOST_API from "./../../util/connection";
+import Tarifa from "./Tarifa";
 
 function ListarTarifas() {
   const [state, setState] = useState([]);
@@ -26,21 +27,15 @@ function ListarTarifas() {
               <th scope="col">Acciones</th>
             </tr>
           </thead>
-          {state.map((tarifa) => {
-            return (
-              <tbody>
-                <tr>
-                  <td>{tarifa.idTarifa}</td>
-                  <td>{tarifa.nombre}</td>
-                  <td>{tarifa.valor}</td>
-                  <td className="acciones">
-                    <Link to={`/editar-tarifa`} className="btn btn-primary mr-2">Editar</Link>
-                    <button type="button" className="btn btn-danger">Eliminar</button>
-                  </td>
-                </tr>
-              </tbody>
-            );
-          })}
+
+          <tbody>
+            {state.map((tarifa) => {
+              return <Tarifa 
+                key="tarifa.idTarifa"
+                tarifa={tarifa}
+              />
+            })}
+          </tbody>
         </table>
         {/*<Link to="/">
           <button style={{ marginLeft: "5%" }}>Volver</button>
