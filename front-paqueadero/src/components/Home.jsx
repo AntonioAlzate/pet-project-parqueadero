@@ -27,11 +27,9 @@ function Home() {
                   src="https://www.carroya.com/noticias/sites/default/files/entradillas/432916874parqueadero-tips-cy.jpg"
                 />
                 <div className="carousel-caption">
-                  <h4>First Thumbnail label</h4>
+                  <h4>Te esperamos</h4>
                   <p>
-                    Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-                    Donec id elit non mi porta gravida at eget metus. Nullam id
-                    dolor id nibh ultricies vehicula ut id elit.
+                    Recogida en el aeropuerto gratis
                   </p>
                 </div>
               </div>
@@ -42,11 +40,9 @@ function Home() {
                   src="https://www.layoutit.com/img/sports-q-c-1600-500-2.jpg"
                 />
                 <div className="carousel-caption">
-                  <h4>Second Thumbnail label</h4>
+                  <h4>Covierte en un cliente premium</h4>
                   <p>
-                    Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-                    Donec id elit non mi porta gravida at eget metus. Nullam id
-                    dolor id nibh ultricies vehicula ut id elit.
+                    Obtienes una lavada gratis al mes
                   </p>
                 </div>
               </div>
@@ -57,11 +53,9 @@ function Home() {
                   src="https://www.layoutit.com/img/sports-q-c-1600-500-3.jpg"
                 />
                 <div className="carousel-caption">
-                  <h4>Third Thumbnail label</h4>
+                  <h4>Abiertos 24/7</h4>
                   <p>
-                    Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-                    Donec id elit non mi porta gravida at eget metus. Nullam id
-                    dolor id nibh ultricies vehicula ut id elit.
+                    Llegues a la hora que llegues siempre estaremos abiertos
                   </p>
                 </div>
               </div>
