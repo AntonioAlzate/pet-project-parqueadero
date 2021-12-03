@@ -1,17 +1,17 @@
 import React, { useState, useRef, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import HOST_API from "../../util/connection";
-import Swal from 'sweetalert2'
-import Store from './../../util/Store';
+import Swal from "sweetalert2";
+import Store from "./../../util/Store";
 
 function EditarCarro() {
   const navigate = useNavigate();
 
   const {
     dispatch,
-    state: { vehiculo },
+    state: { vehiculoEditar },
   } = useContext(Store);
-  const item = vehiculo.item;
+  const item = vehiculoEditar.item;
 
   const formRef = useRef();
   const [state, setState] = useState(item);
@@ -26,29 +26,30 @@ function EditarCarro() {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((response) => response.json())
-    .then((vehiculo) => {
-      setState({});
+    })
+      .then((response) => response.json())
+      .then((vehiculo) => {
+        setState({});
 
-      if (vehiculo.excepcion !== undefined) {
-        Swal.fire({
-          icon: "error",
-          title: "No es posible completar la actualización del vehículo",
-          text: `Motivo: ${vehiculo.mensaje}`,
-        });
-        return;
-      }
+        if (vehiculo.excepcion !== undefined) {
+          Swal.fire({
+            icon: "error",
+            title: "No es posible completar la actualización del vehículo",
+            text: `Motivo: ${vehiculo.mensaje}`,
+          });
+          return;
+        }
 
-      Swal.fire(
-        "¡Vehículo Actualizado Exitosamente!",
-        `Vehículo con placa: ${vehiculo.placa}
+        Swal.fire(
+          "¡Vehículo Actualizado Exitosamente!",
+          `Vehículo con placa: ${vehiculo.placa}
           Marca: ${vehiculo.marca}
           Color: ${vehiculo.color}`,
-        "success"
-      );
+          "success"
+        );
 
-      navigate("/listar-vehiculos");
-    });
+        if (vehiculo.excepcion === undefined) navigate("/listar-vehiculos");
+      });
   }
 
   return (
@@ -93,9 +94,12 @@ function EditarCarro() {
                   }}
                 />
               </div>
-            <button className="btn btn-primary font-weight-bold text-uppercase d-block w-100" onClick={editCar}>
+              <button
+                className="btn btn-primary font-weight-bold text-uppercase d-block w-100"
+                onClick={editCar}
+              >
                 Guardar Cambios
-            </button>
+              </button>
             </form>
             {/*<Link to="/">
               <button>Volver</button>

@@ -1,12 +1,12 @@
 import React, { Fragment, useEffect, useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import HOST_API from "./../../util/connection";
 import Vehiculo from "./Vehiculo";
-import Store from './../../util/Store';
-
+import Store from "./../../util/Store";
 
 function Listado() {
   const [state, setState] = useState([]);
+  const navigate = useNavigate();
 
   const {
     dispatch,
@@ -22,6 +22,10 @@ function Listado() {
         dispatch({ type: "update-list-car", list });
       });
   }, [dispatch]);
+
+  const irRegistrarNuevoVehiculo = () => {
+    navigate("/registrar-vehiculo")
+  }
 
   return (
     <Fragment>
@@ -39,19 +43,17 @@ function Listado() {
           </thead>
 
           <tbody>
-            {state.map((car) => {
-              return <Vehiculo 
-                key = {car.idVehiculo}
-                vehiculoProp={car}
-              />
+            {currentList.map((car) => {
+              return <Vehiculo key={car.idVehiculo} vehiculoProp={car} />;
             })}
           </tbody>
-
         </table>
+        <button 
+          onClick={() => irRegistrarNuevoVehiculo()}
+          className="btn btn-success font-weight-bold text-uppercase d-block w-100 mt-5">
+          Registrar Nuevo Vehiculo
+        </button>
       </div>
-      <Link to="/">
-        <button style={{ marginLeft: "5%" }}>Volver</button>
-      </Link>
     </Fragment>
   );
 }

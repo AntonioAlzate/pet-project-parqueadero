@@ -1,12 +1,21 @@
-import React, { useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useRef, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Fragment } from "react/cjs/react.production.min";
 import HOST_API from "./../../util/connection";
 import Swal from "sweetalert2";
+import Store from './../../util/Store';
+
 
 function FormTarifa() {
-  const [state, setState] = useState({});
   const formRef = useRef(null);
+
+  const {
+    dispatch,
+    state: { tarifa }
+  } = useContext(Store);
+  const item = tarifa.item;
+  const [state, setState] = useState({});
+  const navigate = useNavigate();
 
   const registrarTarifa = (event) => {
     event.preventDefault();
@@ -24,7 +33,8 @@ function FormTarifa() {
     })
       .then((response) => response.json())
       .then((tarifa) => {
-        setState({});
+        dispatch({ type: "add-tarifa", item: tarifa });
+        setState({nombre: "", valor: ""});
 
         if (tarifa.excepcion !== undefined) {
           Swal.fire({
@@ -41,7 +51,9 @@ function FormTarifa() {
               Valor: ${tarifa.valor}`,
           "success"
         );
+
       });
+      navigate("/listar-tarifas")
     formRef.current.reset();
   };
 
@@ -68,7 +80,7 @@ function FormTarifa() {
                 </div>
                 <div className="form-group">
                   <input
-                    type="text"
+                    type="number"
                     name="valor"
                     className="form-control"
                     placeholder="Valor Tarifa"

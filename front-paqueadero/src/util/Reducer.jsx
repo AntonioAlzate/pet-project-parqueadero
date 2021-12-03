@@ -31,10 +31,10 @@ function Reducer(state, action) {
       carUpItem.item = {};
       return { ...state, vehiculo: carUpItem };
     case "car-selected":
-      const cardUpdate = state.vehiculo;
+      const cardUpdate = state.vehiculoEditar;
       cardUpdate.item = action.item;
       cardUpdate.list = state.list;
-      return {...state, vehiculo: cardUpdate}
+      return {...state, vehiculoEditar: cardUpdate}
 
     // Tarifas
     case "update-tarifa":

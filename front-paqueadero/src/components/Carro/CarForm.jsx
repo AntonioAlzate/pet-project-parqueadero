@@ -1,18 +1,20 @@
-import React, { useRef, useState, createContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useRef, useState, createContext, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Fragment } from "react/cjs/react.production.min";
 import HOST_API from "./../../util/connection";
 import Swal from "sweetalert2";
-
-const initialState = {
-  list: [],
-};
-
-const Store = createContext(initialState);
+import Store from './../../util/Store';
 
 const CarForm = () => {
   const formRef = useRef(null);
+
+  const {
+    dispatch,
+    state: { vehiculo }
+  } = useContext(Store);
+  const item = vehiculo.item;
   const [state, setState] = useState({});
+  const navigate = useNavigate();
 
   function addCar(event) {
     event.preventDefault();
@@ -30,7 +32,6 @@ const CarForm = () => {
       },
     }).then((response) => response.json())
     .then((vehiculo) => {
-        setState({});
 
         if (vehiculo.excepcion !== undefined) {
             Swal.fire({
@@ -48,8 +49,14 @@ const CarForm = () => {
               Color: ${vehiculo.color}`,
             "success"
           );
-    });
-    formRef.current.reset();
+            
+          dispatch({ type: "add-car", item: vehiculo });
+          setState({placa: "", marca: "", color: ""});
+
+          navigate("/listar-vehiculos")
+        });
+        formRef.current.reset();
+
   }
 
   return (
