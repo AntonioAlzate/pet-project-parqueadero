@@ -16,7 +16,7 @@ const EditarTarifa = () => {
 
     function eliminar(event){
         event.preventDefault()
-        if(currentTarifa.idTarifa == ""){
+        if(currentTarifa.idTarifa === ""){
             formRef.current.reset()
             return
         }
