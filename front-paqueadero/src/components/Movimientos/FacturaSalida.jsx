@@ -23,7 +23,7 @@ export const FacturaSalida = ({ factura }) => {
                   <br />
                   <span className="invoice-info-label">Fecha Generación: </span>
                   <span className="blue">
-                    {new Date().toJSON().slice(0, 19).replace(/T/g, " ")}
+                    {new Date().toLocaleString().slice(0, 19).replace(/T/g, " ")}
                   </span>
                 </div>
 
